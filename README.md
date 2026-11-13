@@ -118,7 +118,7 @@ falls back to its default rather than failing activation.
 | Helper runs | a separate `pi` process with a copy of the chat | a read-only child Agent with its own session |
 | While it runs | you keep chatting | the composer is locked while the command is submitted (DSH runs input-carrying commands synchronously) |
 | Progress | a two-row meter, step by step | one status row under the composer |
-| Cancel | Esc | stopped by `timeoutMs` |
+| Cancel | Esc | only `timeoutMs` (see below) |
 | `/better-boomerang` | yes | not yet |
 | Agent uses it for subagent briefs | via pi-subagents | not yet (planned: a `better_prompt` tool) |
 
@@ -127,6 +127,13 @@ falls back to its default rather than failing activation.
 - **The composer is locked while a run is in flight.** DSH submits a command with input as one
   transaction, so the editor is read-only until the handler returns. `timeoutMs` bounds it; the
   default is 10 minutes.
+- **There is no stop gesture yet.** The Web client dispatches a command with
+  `remote.commands.execute(sessionId, line, attachments)` and passes no cancellation signal
+  (`dsh-client-ui-commands/lib/client.js`), so the composer's stop binding never reaches the handler,
+  and `withAbort` in `dsh-commands` only stops the registry awaiting — the handler keeps its side
+  effects. The Host half already aborts its helper run from `invocation.signal`
+  (`index.js`, `startHelper`), which today fires when the dispatching request itself dies, not on Esc.
+  A stop control that reaches the Host is the first item for 0.2.
 - **No live tool-by-tool progress.** The status row says a run is happening; it does not stream the
   helper's steps.
 - **The helper needs the `spawn` subagent backend** (or whatever `subagentProvider` names). Without
