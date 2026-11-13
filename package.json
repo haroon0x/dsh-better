@@ -1,0 +1,57 @@
+{
+  "name": "@haroon0x/dsh-better",
+  "version": "0.1.0",
+  "description": "Type /better and your request comes back rewritten the way a top professional in the field would ask it, grounded in your real files, in your input box.",
+  "type": "module",
+  "license": "MIT",
+  "author": "haroon0x",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haroon0x/dsh-better.git"
+  },
+  "homepage": "https://github.com/haroon0x/dsh-better#readme",
+  "bugs": {
+    "url": "https://github.com/haroon0x/dsh-better/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "slash-command",
+    "prompt-engineering",
+    "prompt-rewriter"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./prompt": "./lib/prompt.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib/prompt.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check index.js && node --check client.js && node --check lib/prompt.js"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

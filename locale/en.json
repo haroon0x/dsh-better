@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "title": "Better",
+    "description": "Adds /better: rewrites a request the way a top professional in the field would ask it, grounded in this workspace, and puts the rewrite in your input box."
+  },
+  "command": {
+    "description": "Deepen the request before you send it: rewrite it the way a top professional in this field would ask it, grounded in this workspace."
+  }
+}

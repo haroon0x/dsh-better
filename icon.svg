@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Better">
+  <defs>
+    <linearGradient id="dsh-better-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b9ae1"/>
+      <stop offset="1" stop-color="#1f5fa8"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="64" height="64" rx="15" fill="url(#dsh-better-fill)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 20.5 L32 32 L46 20.5" opacity="0.45"/>
+    <path d="M18 31 L32 42.5 L46 31" opacity="0.75"/>
+    <path d="M32 44.5 L32 52"/>
+  </g>
+  <circle cx="32" cy="52" r="3.4" fill="#ffffff"/>
+</svg>

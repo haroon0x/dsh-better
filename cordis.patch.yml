@@ -1,0 +1,6 @@
+# dsh-better — Loader patch: one Host row named after this package.
+# The Client half loads from package.json's dsh.client section.
+- insert:
+    - id: dsh-better
+      name: '@haroon0x/dsh-better'
+      config: {}
