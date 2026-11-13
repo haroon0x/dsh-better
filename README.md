@@ -87,7 +87,11 @@ Set fields on the plugin row, in your profile's `cordis.patch.yml`:
 ```
 
 `provider` and `model` must be set together; a lone half is ignored so the helper inherits the
-session's route instead of failing. The bundle declares no Config schema, so a wrong-typed value
+session's route instead of failing.
+
+Give the helper a **faster route than the session's** when your session runs at a high reasoning
+effort. The helper reads files and rewrites one paragraph; max-effort reasoning there buys little and
+spends most of the run. `reasoningEffort: low` with the same model is usually the right trade. The bundle declares no Config schema, so a wrong-typed value
 falls back to its default rather than failing activation.
 
 ## How it works
@@ -127,6 +131,9 @@ falls back to its default rather than failing activation.
   helper's steps.
 - **The helper needs the `spawn` subagent backend** (or whatever `subagentProvider` names). Without
   a subagent service, `/better` reports that and does nothing else.
+- **A run can be slow on a high-effort route.** The helper inherits this session's model and
+  reasoning effort unless `provider`/`model`/`reasoningEffort` are configured, and a long assistant
+  loop is exactly where max effort costs the most. See [Configuration](#configuration).
 - **`bash` is allowed** so the helper can use `git`, `ls` and `rg`. The prompt forbids changes and
   the edit/write tools are removed, but a shell is a shell.
 
