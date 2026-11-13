@@ -74,6 +74,7 @@ export function apply(ctx, config = {}) {
 async function runBetter(ctx, invocation, settings) {
   const agent = invocation?.agent
   if (agent === undefined) return fail('This command needs a live session and none is attached.')
+  if (invocation.signal?.aborted) return fail('Stopped before the helper started. Nothing was sent and nothing changed.')
 
   const request = typeof invocation.rawInput === 'string' ? invocation.rawInput.trim() : ''
   const transcript = request === '' ? transcriptFromMessages(readMessages(agent)) : ''

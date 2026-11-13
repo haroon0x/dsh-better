@@ -61,6 +61,14 @@ line. Edit it, then press Enter. Nothing is sent until you do.
 With no request, it deepens the task your session is already on — the last thing you asked for plus
 any feedback you have given since.
 
+## Check it works
+
+Type `/better make the error messages clearer` in a session that is open on a repo, press Enter, and
+watch for three things: a status row under the composer saying a helper is working, the command row in
+the transcript settling, and the rewrite appearing in your input box with a notice. If the input box
+stays empty, the command row in the transcript carries the reason — that is where every failure in this
+plugin explains itself.
+
 ## Configuration
 
 Set fields on the plugin row, in your profile's `cordis.patch.yml`:
