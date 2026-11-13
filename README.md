@@ -81,7 +81,7 @@ Set fields on the plugin row, in your profile's `cordis.patch.yml`:
     model: deepseek-v4.1-flash
     reasoningEffort: high
     subagentProvider: spawn         # subagent backend name (default: spawn)
-    timeoutMs: 300000               # hard stop for one run (default: 5 minutes)
+    timeoutMs: 600000               # hard stop for one run (default: 10 minutes)
     allowedTools: [read, glob, grep, bash]   # default: read, read_image, glob, grep, bash, web_fetch, web_search
     description: 'Rewrite this request before I send it.'
 ```
@@ -122,7 +122,7 @@ falls back to its default rather than failing activation.
 
 - **The composer is locked while a run is in flight.** DSH submits a command with input as one
   transaction, so the editor is read-only until the handler returns. `timeoutMs` bounds it; the
-  default is 5 minutes.
+  default is 10 minutes.
 - **No live tool-by-tool progress.** The status row says a run is happening; it does not stream the
   helper's steps.
 - **The helper needs the `spawn` subagent backend** (or whatever `subagentProvider` names). Without

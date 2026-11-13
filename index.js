@@ -36,10 +36,10 @@ const INPUT_HINT = '<what you want done>'
 const DEFAULT_ALLOWED_TOOLS = ['read', 'read_image', 'glob', 'grep', 'bash', 'web_fetch', 'web_search']
 
 /**
- * Five minutes. The composer is locked while a command with input is submitted,
- * so the cap is what bounds a stuck run.
+ * Ten minutes. The composer is locked while a command with input is submitted,
+ * so this cap is what bounds a stuck run; a real repo read needs room under it.
  */
-const DEFAULT_TIMEOUT_MS = 5 * 60 * 1000
+const DEFAULT_TIMEOUT_MS = 10 * 60 * 1000
 
 /**
  * Mount the command.
